@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Admin</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+	<link rel="stylesheet" href="../sass/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="nav-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-3 d-flex justify-content-between">
+					<span class="fs-6">
+						<img src="https://img.icons8.com/pastel-glyph/20/null/place-marker--v1.png" />
+						<span class="text-secondary fs-6">City:</span> Tashkent
+					</span>
+					<span class="fs-6">
+						Pickup Points
+					</span>
+				</div>
+				<div class="col-3 fs-6 text-secondary mx-auto">
+					Buyurtmangizni bir kunda yetkazib beramiz
+				</div>
+				<div class="col-4 row">
+					<div class="col-4 text-secondary fs-6">Savol-javoblar</div>
+					<div class="col-4 text-secondary fs-6">Buyurtmalarim</div>
+					<div class="col-4 text-secondary fs-6">
+						<select name="" id="language-select">
+							<option value="uz"><img
+									src="https://img.icons8.com/color/30/null/uzbekistan.png" />O'zbekcha</option>
+							<option value="ru">Russian</option>
+							<option value="en">English</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container pt-3 pb-5">
+		<!-- Header -->
+		<header class="header">
+			<div class="header__top d-flex align-items-center justify-content-between pb-3">
+				<img href="../index.html" src="../assets/uzum.svg" alt="">
+				<div class="catalog rounded">
+					<div class="d-flex align-items-center gap-2">
+						<i class="fa fa-list text-primary fs-5"></i>
+						<span class="fs-6 text-primary">Katalog</span>
+					</div>
+				</div>
+				<form action="/action_page.php" class="Input-container d-flex">
+					<input style="width: 500px" type="search" class="form-control" name=""
+						placeholder="Mahsulot va turkumlar izlash" id="" />
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+				<div>
+					<ul class="d-flex align-items-center gap-4 header-left fs-6 text-dark">
+						<li class="list-group-item">
+							<button onclick="loginHandler()" id="login-btn">
+								Kirish
+							</button>
+						<li class="list-group-item"><a class="text-dark" href="./wishes.html"><img
+									src="https://img.icons8.com/ios-glyphs/20/null/hearts.png" /> Saralangan</a></li>
+						<li class="list-group-item cursor-pointer"><img
+								src="https://img.icons8.com/ios/18/null/shopping-bag--v1.png" /> Savat</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header__bottom">
+				<ul id="categories" class="d-flex gap-3 fs-6 text-secondary justify-content-between">
+					<!-- <li class="list-group-item">Elektronika</li> -->
+					
+				</ul>
+			</div>
+		</header>
+
+		<!-- Header -->
+
+		<form action="" class="form-control" id="add-form">
+			<input type="text" name="title" class="form-control mt-3" placeholder="title">
+			<input type="text" class="form-control mt-3" placeholder="image" name="image">
+			<input type="number" class="form-control mt-3" placeholder="price" name="price">
+			<input type="number" class="form-control mt-3" placeholder="rating" name="rating">
+			<select name="category" class="form-control mt-3">
+				<option value="kiyim">kiyim</option>
+				<option value="tufli">tufli</option>
+				<option value="kurtka">kurtka</option>
+			</select>
+			<button type="submit" class="form-control mt-3 btn btn-outline-primary" id="submit-btn">Submit</button>
+		</form>
+
+		<main>
+			<section class="popular-products my-5">
+				<div id="loader" style="display: block;" class="spinner-border mx-auto" role="status">
+					<span class="visually-hidden">Loading...</span>
+				</div>
+				<ul id="products-top" class="products-top row gap-1 my-3 justify-content-between"></ul>
+			</section>
+		</main>
+	</div>
+
+	<button onclick="topFunction()" id="myBtn" title="Go to top">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+			<path
+				d="M12 4.4c-4.3 0-7.8 3.5-7.8 7.8s3.5 7.8 7.8 7.8 7.8-3.5 7.8-7.8-3.5-7.8-7.8-7.8zM16.3 12.9l-3.5-3.5v8.6h-1v-8.6l-3.5 3.5-1.4-1.4 5.2-5.2 5.2 5.2-1.5 1.4z" />
+		</svg>
+	</button>
+
+	<template id="product-template">
+		<li class="col-2 mb-3">
+			<div class="card position-relative">
+				<svg style="z-index: 10" data-v-56571d0e="" width="20" height="20" viewBox="0 0 20 20" fill="none"
+					xmlns="http://www.w3.org/2000/svg" alt="like" class="ui-icon position-absolute end-0 me-2 mt-2"
+					id="like">
+					<path id="path"
+						d="M5.95 2C8.51792 2 10 4.15234 10 4.15234C10 4.15234 11.485 2 14.05 2C16.705 2 19 4.07 19 6.95C19 11.1805 12.5604 15.6197 10.3651 17.5603C10.1582 17.7432 9.84179 17.7432 9.63488 17.5603C7.44056 15.6209 1 11.1803 1 6.95C1 4.07 3.295 2 5.95 2Z"
+						fill="red"></path>
+					<path
+						d="M1 6.86486C1 4.20297 3.15017 2 5.86486 2C7.98685 2 9.35921 3.35876 10 4.18673C10.6408 3.35876 12.0132 2 14.1351 2C16.8506 2 19 4.20302 19 6.86486C19 8.02987 18.5328 9.18622 17.8534 10.265C17.1716 11.3476 16.252 12.3903 15.29 13.3377C13.9567 14.6508 12.4757 15.8387 11.4134 16.6907C10.9618 17.0529 10.5859 17.3544 10.3293 17.579C10.1407 17.7439 9.85926 17.7439 9.67075 17.579C9.41405 17.3544 9.03815 17.0529 8.58659 16.6907C7.52431 15.8387 6.04326 14.6508 4.70997 13.3377C3.74802 12.3903 2.82836 11.3476 2.14659 10.265C1.46724 9.18622 1 8.02987 1 6.86486ZM5.86486 3C3.70929 3 2 4.74838 2 6.86486C2 7.76743 2.36553 8.73607 2.99277 9.73208C3.61759 10.7242 4.47833 11.706 5.41165 12.6252C6.71033 13.9042 8.08423 15.005 9.13396 15.8461C9.45728 16.1052 9.74985 16.3396 10 16.547C10.2501 16.3396 10.5427 16.1052 10.866 15.8461C11.9158 15.005 13.2897 13.9042 14.5883 12.6252C15.5217 11.706 16.3824 10.7242 17.0072 9.73208C17.6345 8.73607 18 7.76743 18 6.86486C18 4.74833 16.2914 3 14.1351 3C12.0406 3 10.8181 4.70211 10.5033 5.21028C10.2727 5.5825 9.72727 5.58249 9.4967 5.21027C9.1819 4.7021 7.95944 3 5.86486 3Z"
+						fill="#15151A"></path>
+				</svg>
+				<img width="100%" height="200" class="card-img-top w-100" src="https://picsum.photos/200/300"
+					alt="Card image cap" />
+				<div class="card-body">
+					<h4 id="title">Lorem ipsum dolor sit amet.</h4>
+					<p id="rating"></p>
+					<p id="price">123123</p>
+					<p class="category"></p>
+				</div>
+				<div class="card-footer">
+					<button class="btn btn-info">Edit</button>
+					<button class="btn btn-danger">Remove</button>
+				</div>
+			</div>
+		</li>
+	</template>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+
+	<script src="./js/utils/api.js"></script>
+	<script src="../js/utils/changeLoading.js"></script>
+	<script src="../js/utils/toTopBtn.js"></script>
+	<!-- <script src="./js/lesson.js"></script> -->
+	<!-- <script src="./js/product.js"></script> -->
+	<script src="../js/utils/findElement.js"></script>
+	<script src="../js/utils/renderProducts.js"></script>
+	<script src="../js/utils/languages.js"></script>
+	<script src="../js/admin.js"></script>
+</body>
+
+</html>
