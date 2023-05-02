@@ -44,7 +44,7 @@ function renderProducts(array, parent, template, isAdmin = false) {
 
 			elImg.addEventListener('click', () => {
 				localStorage.setItem('id', product.id)
-				window.location.href = 'file:///C:/Users/user/Desktop/Front-end/4-oy/Uzum1/Uzum/pages/single-product.html'
+				window.location.href = 'pages/single-product.html'
 
 			})
 

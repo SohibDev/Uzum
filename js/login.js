@@ -44,7 +44,7 @@ submitBtn.addEventListener("click", async (event) => {
 
     const token = data.token;
     localStorage.setItem("token", token);
-    const newUrl = new URL("file:///C:/Users/user/Desktop/Front-end/4-oy/Uzum1/Uzum/index.html");
+    const newUrl = new URL("https://bejewelled-creponne-bce146.netlify.app/index.html");
     window.location.assign(newUrl.href);
 
     console.log(localStorage);
