@@ -11,7 +11,7 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./sass/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -159,7 +159,7 @@
                 <ul
                   class="navbar-nav justify-content-center justify-content-lg-start align-items-lg-center"
                 >
-                  <li class="nav-item d-flex align-items-center">
+                  <li class=" d-flex align-items-center">
                     <form class="d-flex">
                       <input
                         type="search"
@@ -178,8 +178,9 @@
                   <li class="nav-item">
                     <button
                       id="login-btn"
-                      class="btn me-3 me-md-0 fs-5 nav-link"
+                      class="btn me-3 me-md-0 nav-link"
                       href="./pages/login.html"
+                      style="font-size: 18px;"
                     >
                       Kirish
                     </button>
@@ -282,7 +283,7 @@
           </div>
         </section>
 
-        <section class="popular-products my-5">
+        <section class="popular-products mt-3 pb-5">
           <a>Katta sotuvlar &#8658;</a>
           <div
             id="loader"
@@ -315,7 +316,8 @@
     </button>
 
     <template id="product-template">
-      <li class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 my-1">
+      <li class="col-6 col-sm-5 col-md-4 col-lg-3 col-xl-2 my-1" style="box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2)
+      ;">
         <div class="card position-relative mx-auto" style="max-width: 205px">
           <svg
             style="z-index: 10"

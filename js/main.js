@@ -37,7 +37,6 @@ elForm.addEventListener("submit", (evt) => {
   renderProducts(searchResultArray, elTopList, elTopTemplate);
 });
 
-
 const getData = async () => {
   try {
     changeLoading(true);
@@ -163,19 +162,23 @@ fetch(BASE_URL + "categories")
   });
 
 const renderCategories = (array, parent) => {
+  const addedCategories = []; // keep track of added category names
+
   const newli = document.createElement("li");
   newli.className = "list-group-item";
-
   newli.textContent = "All";
-
   parent.appendChild(newli);
+  addedCategories.push("All");
+
   array.forEach((category) => {
-    const newli = document.createElement("li");
-    newli.className = "list-group-item";
-
-    newli.textContent = category.name;
-
-    parent.appendChild(newli);
+    if (!addedCategories.includes(category.name)) {
+      // check if category name is already added
+      const newli = document.createElement("li");
+      newli.className = "list-group-item";
+      newli.textContent = category.name;
+      parent.appendChild(newli);
+      addedCategories.push(category.name);
+    }
   });
 };
 
@@ -191,7 +194,6 @@ ulCategories.addEventListener("click", (evt) => {
       products.forEach((product) => {
         if (product.category === category) {
           result.push(product);
-          console.log(product);
         }
       });
       renderProducts(result, elTopList, elTopTemplate);
