@@ -13,12 +13,14 @@ const adminLink = findElement("#admin");
 let allProductsCount = 0;
 let token = localStorage.getItem("token");
 const elPaginationList = findElement(".pagination");
+const elForm = findElement("form");
 const elSearch = findElement("#search");
 let products = [];
 let favoriteProducts = [];
 let categories = [];
 
-elSearch.addEventListener("change", () => {
+elForm.addEventListener("submit", (evt) => {
+  evt.preventDefault(); // Prevent the form from reloading the page
   const value = elSearch.value;
   let searchResultArray;
 
