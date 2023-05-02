@@ -65,22 +65,23 @@ async function renderPage() {
   const categorySet = new Set();
   categories.forEach((category) => categorySet.add(category.name));
   categoryContainer.innerHTML = `
-    <div class="d-flex flex-wrap justify-content-between align-items-center" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
-      <h5>Categories:</h5> 
-      <button class="btn btn-secondary d-sm-none" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse"> Show/Hide </button> 
-    </div> 
-    <div class="collapse d-sm-block" id="categoryCollapse"> 
-      <div class="list-group"> 
-        ${Array.from(categorySet)
-          .map(
-            (category) => `
-          <a href="#" class="list-group-item" style="box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2)
-          ;">${category}</a>
-        `
-          )
-          .join("")} 
-      </div> 
-    </div>
+  <div class="d-flex flex-wrap justify-content-between align-items-center" style="box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);">
+  <h5>Categories:</h5> 
+  <button class="btn btn-secondary d-block d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#categoryCollapse" aria-expanded="false" aria-controls="categoryCollapse"> Show/Hide </button> 
+</div> 
+<div class="collapse d-md-block" id="categoryCollapse"> 
+  <div class="list-group"> 
+    ${Array.from(categorySet)
+      .map(
+        (category) => `
+      <a href="#" class="list-group-item" style="box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2)
+      ;">${category}</a>
+    `
+      )
+      .join("")} 
+  </div> 
+</div>
+
   `;
 }
 
